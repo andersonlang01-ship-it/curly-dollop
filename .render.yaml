@@ -1,6 +1,0 @@
-services:
-  - type: static
-    name: curly-dollop-site
-    env: static
-    plan: free
-    staticPublishPath: .
