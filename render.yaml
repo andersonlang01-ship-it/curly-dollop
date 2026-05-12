@@ -1,27 +1,19 @@
 services:
-  # Backend API (Node.js)
   - type: web
-    name: backend-api
+    name: website-backend
     runtime: node
     plan: free
+    branch: main
     buildCommand: npm install
     startCommand: node server.js
     envVars:
+      - key: NODE_ENV
+        value: production
       - key: DATABASE_URL
         fromDatabase:
-          name: site-db
+          name: website-db
           property: connectionString
 
-  # Frontend (HTML/CSS/JS)
-  - type: web
-    name: frontend
-    runtime: static
-    buildCommand: ""
-    staticPublishPath: public
-    envVars:
-      - key: API_URL
-        value: https://backend-api.onrender.com
-
 databases:
-  - name: site-db
+  - name: website-db
     plan: free
